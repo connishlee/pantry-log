@@ -3,3 +3,87 @@
   padding: 0;
   margin: 0;
 }
+
+.app-bar {
+  text-align: center;
+  background-color: #42566a;
+}
+
+.remove {
+  margin-left: 2rem;
+  padding: 1rem;
+  border: none;
+}
+
+.remove:hover {
+  background-color: red;
+}
+
+.inventory-container {
+  padding: 1rem; /* p-4: padding of 4 (in Tailwind, it's 1rem by default) */
+  width: 100%; /* w-full: full width */
+  display: flex; /* flex: enables flexbox layout */
+  justify-content: space-between;
+}
+
+.quantity-container {
+  background-color: #008ecc;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.quantity-form {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+
+.item-input {
+  grid-columns: span 3;
+  padding: 1rem;
+  border: none;
+}
+
+.item-add {
+  padding: 1rem;
+  grid-columns: span 3;
+  border: none;
+}
+
+.item-add:hover {
+  background-color: black;
+}
+
+.quantity-input {
+  grid-columns: span 3;
+  padding: 1rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  border: none;
+}
+
+.box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background color for contrast */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.stack {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+li {
+  margin-top: 1rem; /* p-4: padding of 4 (in Tailwind, it's 1rem by default) */
+  width: 100%; /* w-full: full width */
+  display: flex; /* flex: enables flexbox layout */
+  justify-content: space-between;
+}
+
+li:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
