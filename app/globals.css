@@ -1,76 +1,119 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+/* App Bar */
 .app-bar {
   text-align: center;
   background-color: #42566a;
+  padding: 1rem;
+  color: #fff;
 }
 
-.remove {
-  margin-left: 2rem;
+/* Groceries List */
+.groceries-list {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Inventory Container */
+.inventory-container {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 175px;
+}
+
+/* Text Elements */
+.name,
+.quantity {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Button Styles */
+.remove {
+  background-color: #ff5f5f;
+  color: white;
   border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .remove:hover {
   background-color: red;
 }
 
-.inventory-container {
-  padding: 1rem; /* p-4: padding of 4 (in Tailwind, it's 1rem by default) */
-  width: 100%; /* w-full: full width */
-  display: flex; /* flex: enables flexbox layout */
-  justify-content: space-between;
-}
-
+/* Quantity Container */
 .quantity-container {
-  background-color: #008ecc;
-  padding: 8px;
-  border-radius: 5px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Quantity Form */
 .quantity-form {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   gap: 0.5rem;
 }
 
-.item-input {
-  grid-columns: span 3;
+.item-input,
+.item-add,
+.quantity-input {
   padding: 1rem;
   border: none;
+  border-radius: 4px;
+}
+
+/* Grid Span Adjustments */
+.item-input {
+  grid-column: span 3;
 }
 
 .item-add {
-  padding: 1rem;
-  grid-columns: span 3;
-  border: none;
+  background-color: #008ecc;
+  color: white;
+  cursor: pointer;
 }
 
 .item-add:hover {
-  background-color: black;
+  background-color: #007bb5;
 }
 
 .quantity-input {
-  grid-columns: span 3;
-  padding: 1rem;
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-  border: none;
+  grid-column: span 3;
 }
 
+/* Box Container */
 .box {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9; /* Light background color for contrast */
-  border-radius: 8px; /* Slightly rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Stack List */
 .stack {
   padding: 0;
   list-style-type: none;
@@ -78,12 +121,14 @@
 }
 
 li {
-  margin-top: 1rem; /* p-4: padding of 4 (in Tailwind, it's 1rem by default) */
-  width: 100%; /* w-full: full width */
-  display: flex; /* flex: enables flexbox layout */
+  margin-top: 1rem;
+  display: flex;
   justify-content: space-between;
+  /* padding: 1rem; */
+  border-radius: 8px;
+  color: white;
 }
 
 li:last-child {
-  border-bottom: none; /* Remove border for the last item */
+  border-bottom: none;
 }

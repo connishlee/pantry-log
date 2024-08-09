@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Inventory from "./components/inventory";
-import QuantityControl from "./components/quantityInput";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
       marginRight="auto"
       marginLeft="auto"
     >
-      <QuantityControl />
       <Inventory />
     </Box>
   );

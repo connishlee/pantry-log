@@ -1,36 +1,84 @@
 "use client";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
+import { addItems, delItems, readItems } from "../helpers/datacalls";
+
 export default function Inventory() {
-  const [items, setItems] = useState([
-    { name: "test", quantity: 0 },
-    { name: "bot", quantity: 10 },
-  ]);
+  const [items, setItems] = useState([]);
+  const [newItems, setNewItems] = useState({ name: "", quantity: "" });
+
+  useEffect(() => {
+    const readInventory = async () => {
+      let items = await readItems();
+      setItems(items);
+    };
+    readInventory();
+  }, [items]);
+
+  const handleAddItems = async (e) => {
+    e.preventDefault();
+    await addItems(newItems);
+    setNewItems({ name: "", quantity: 0 });
+  };
+
+  const handleDeleteItems = async (id) => {
+    await delItems(id);
+  };
+
   return (
-    <Box
-      className="box"
-      sx={{ width: "100%" }}
-    >
+    <Box>
       <Stack
         className="stack"
         spacing={2}
       >
-        <ul>
-          {items.map((groceries, id) => (
-            <li key={id}>
+        <div className="quantity-container">
+          <form className="quantity-form">
+            <input
+              value={newItems.name}
+              onChange={(e) =>
+                setNewItems({ ...newItems, name: e.target.value })
+              }
+              className="item-input"
+              placeholder="Item"
+              type="text"
+            ></input>
+            <input
+              value={newItems.quantity}
+              onChange={(e) =>
+                setNewItems({
+                  ...newItems,
+                  quantity: e.target.value,
+                })
+              }
+              className="quantity-input"
+              placeholder="Quantity"
+              type="number"
+            ></input>
+            <button
+              onClick={handleAddItems}
+              className="item-add"
+              type="submit"
+            >
+              +
+            </button>
+          </form>
+        </div>
+        <ul className="groceries-list">
+          {items.map((groceries) => (
+            <li key={groceries.id}>
               <div className="inventory-container">
-                <span>{groceries.name}</span>
-                <span className="quantity">{groceries.quantity}</span>
+                <span className="name">{groceries.name}</span>
+                <span className="quantity">Quantity: {groceries.quantity}</span>
+                <button
+                  className="remove"
+                  onClick={() => handleDeleteItems(groceries.id)}
+                >
+                  X
+                </button>
               </div>
-              <button
-                className="remove"
-                type="submit"
-              >
-                X
-              </button>
             </li>
           ))}
         </ul>
